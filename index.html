@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JOYES PRINT | JOYES ONLINE</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+*{box-sizing:border-box} body{margin:0;font-family:Arial,"Noto Sans Bengali",sans-serif;background:#f4f7fb;color:#172033}
+header{background:linear-gradient(135deg,#0b4f9c,#087fbd);color:white;padding:25px 16px;text-align:center}
+header h1{margin:0;font-size:32px;letter-spacing:1px} header p{margin:7px 0 0}
+nav{background:#fff;display:flex;gap:8px;justify-content:center;flex-wrap:wrap;padding:12px;box-shadow:0 2px 8px #0001;position:sticky;top:0;z-index:3}
+nav a{color:#0b4f9c;text-decoration:none;font-weight:bold;padding:8px 12px}
+.container{max-width:1050px;margin:auto;padding:20px}
+.hero{background:white;border-radius:18px;padding:30px;text-align:center;box-shadow:0 5px 20px #0001;margin-bottom:20px}
+.hero h2{font-size:28px;margin:5px}.hero p{color:#566}
+.btn{display:inline-block;background:#0b66b2;color:white;border:0;border-radius:9px;padding:11px 18px;font-weight:bold;cursor:pointer;text-decoration:none;margin:5px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px}
+.card{background:#fff;border-radius:15px;padding:20px;box-shadow:0 4px 15px #0001}
+.card h3{margin-top:0;color:#0b5da8}
+label{display:block;font-weight:bold;margin-top:12px} input,textarea,select{width:100%;padding:11px;border:1px solid #ccd5df;border-radius:8px;margin-top:5px;font-size:15px}
+textarea{min-height:90px} section{margin:25px 0}
+#printArea{background:white;padding:25px;border-radius:12px}
+.print-head{text-align:center;border-bottom:2px solid #222;padding-bottom:12px}
+.qrbox{text-align:center;margin-top:20px}
+footer{background:#12304d;color:white;text-align:center;padding:22px;margin-top:30px}
+@media print{nav,.btn,header,footer,.no-print{display:none!important}body{background:white}.container{padding:0}.card,#printArea{box-shadow:none;border:0}}
+</style>
+</head>
+<body>
+<header>
+  <h1>JOYES PRINT</h1>
+  <p>JOYES ONLINE • KAPSUNDI</p>
+</header>
+<nav>
+<a href="#home">হোম</a><a href="#services">সার্ভিস</a><a href="#form">অনলাইন ফর্ম</a><a href="#print">প্রিন্ট</a><a href="#qr">QR Code</a><a href="#contact">যোগাযোগ</a>
+</nav>
+
+<div class="container">
+<section id="home" class="hero">
+<h2>JOYES ONLINE</h2>
+<p>অনলাইন ফর্ম • ডকুমেন্ট • প্রিন্ট • PDF • QR Code</p>
+<a class="btn" href="#form">ফর্ম পূরণ করুন</a>
+<a class="btn" href="#print">প্রিন্ট করুন</a>
+</section>
+
+<section id="services">
+<h2>আমাদের সার্ভিস</h2>
+<div class="grid">
+<div class="card"><h3>📄 Online Form</h3><p>গ্রাহকের তথ্য নিয়ে সুন্দরভাবে ফর্ম তৈরি করুন।</p></div>
+<div class="card"><h3>🖨️ Print</h3><p>ফর্ম বা ডকুমেন্ট সরাসরি প্রিন্ট করুন।</p></div>
+<div class="card"><h3>📥 PDF</h3><p>প্রিন্ট ডায়ালগ থেকে Save as PDF করা যাবে।</p></div>
+<div class="card"><h3>📱 QR Code</h3><p>ওয়েবসাইটের লিংকের QR Code তৈরি করুন।</p></div>
+<div class="card"><h3>👨‍🎓 Student Info</h3><p>ছাত্রছাত্রীর নাম, রোল ও অন্যান্য তথ্য সাজিয়ে রাখুন।</p></div>
+<div class="card"><h3>📞 Contact</h3><p>ফোন: 9002977043<br>স্থান: KAPSUNDI</p></div>
+</div>
+</section>
+
+<section id="form" class="card">
+<h2>অনলাইন ফর্ম</h2>
+<label>নাম</label><input id="name" placeholder="নাম লিখুন">
+<label>রোল / ID</label><input id="roll" placeholder="রোল বা ID">
+<label>ঠিকানা</label><textarea id="address" placeholder="ঠিকানা লিখুন"></textarea>
+<label>মোবাইল</label><input id="mobile" placeholder="মোবাইল নম্বর">
+<button class="btn" onclick="makeDocument()">ডকুমেন্ট তৈরি করুন</button>
+</section>
+
+<section id="print" class="card">
+<h2>প্রিন্ট ডকুমেন্ট</h2>
+<div id="printArea">
+<div class="print-head"><h2>JOYES PRINT</h2><div>JOYES ONLINE • KAPSUNDI</div></div>
+<p><b>নাম:</b> <span id="pname">—</span></p>
+<p><b>রোল / ID:</b> <span id="proll">—</span></p>
+<p><b>ঠিকানা:</b> <span id="paddress">—</span></p>
+<p><b>মোবাইল:</b> <span id="pmobile">—</span></p>
+<hr><p style="text-align:center">ফোন: 9002977043 | স্থান: KAPSUNDI</p>
+</div>
+<button class="btn no-print" onclick="window.print()">🖨️ Print / Save PDF</button>
+</section>
+
+<section id="qr" class="card">
+<h2>ওয়েবসাইটের QR Code</h2>
+<p>এই QR Code-এ আপনার ওয়েবসাইটের ঠিকানা বসিয়ে ব্যবহার করতে পারবেন।</p>
+<div class="qrbox" id="qrcode"></div>
+<button class="btn no-print" onclick="generateQR()">QR আবার তৈরি করুন</button>
+</section>
+
+<section id="contact" class="hero">
+<h2>যোগাযোগ</h2>
+<p><b>JOYES ONLINE</b></p>
+<p>📞 9002977043</p><p>📍 KAPSUNDI</p>
+<a class="btn" href="tel:9002977043">Call Now</a>
+</section>
+</div>
+
+<footer>© 2026 JOYES PRINT • JOYES ONLINE • KAPSUNDI</footer>
+
+<script>
+function makeDocument(){
+ document.getElementById('pname').textContent=document.getElementById('name').value||'—';
+ document.getElementById('proll').textContent=document.getElementById('roll').value||'—';
+ document.getElementById('paddress').textContent=document.getElementById('address').value||'—';
+ document.getElementById('pmobile').textContent=document.getElementById('mobile').value||'—';
+ location.hash='print';
+}
+function generateQR(){
+ const box=document.getElementById('qrcode'); box.innerHTML='';
+ new QRCode(box,{text:window.location.href,width:180,height:180});
+}
+generateQR();
+</script>
+</body>
+</html>
